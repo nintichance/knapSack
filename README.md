@@ -36,6 +36,8 @@
 
 After the grid is completely filled out, we have the max Value and the max Number of items that we can add to the knapSack. We can use this max number of items to work our way backwards through the grid to reveal which item(s) we added to the knapSack to achieve the highest value without exceeding the max capacity.
 
+When writing this solution, I assumed items were passed in as an array of objects; however, items need to be passed in as two separate arrays--one containing the item value and the other array containing it's corresponding item weight.
+
 ## Variations & Applications
 
 The following variations and applications were plucked from [Jan-Willem Buurlage's Slides](https://homepages.cwi.nl/~buurlage/lcsc/slides_week15.pdf).
@@ -50,7 +52,20 @@ The following variations and applications were plucked from [Jan-Willem Buurlage
   * And a particular report is graded considering *m* criteria and the particular report (*i*th) counts from *v* percent of the grade.
   * Given each report takes *w* hours to complete, choose to complete the reports with the highest *v* percent of the grade that can be completed within *W* hours.
 
-  ### Variations on the knapSack Problem
+### Variations on the knapSack Problem
 
-  1. Subset Sum Problem
-  
+1. Subset Sum Problem
+  * If you remove the profits from the 0-1 KnapSack problem, it becomes equivalent the to subset sum problem.
+  * Given an array of integers *N*, find a subset of said integers which has the sum of 0.
+  * Also, we can search for a subset that adds up to any integer *n*.
+  * "An interesting special case is the partition problem, where *s* is half of the total sum: *Can we divide this collection equally among two persons?*
+
+2. (Un)bouded KnapSack Problem
+  * The **unbounded** knapSack problem allows us to add the current item to the knapSack multiple times.
+  * The **bounded** knapSack problem only allows us to add each item to a specified limit. The solution in this repo for the **bounded** knapSack problem is in knapSackProblem.js and considers only 1 of each item can be added.
+
+3. Multiple KnapSack Problem
+  * We can consider having multiple knapSacks.
+  * knapSack *i* has the capacity *M*
+  * Choose *N* (mutally exclusive) subsets *S* with *S* less total weight than *M*
+  * Maximize the combine value of the subsets
